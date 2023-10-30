@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
 </head>
 <body>
     <header id='header'>
@@ -37,34 +37,31 @@
                 </div>
             </div>
     </section>
-<!--Bootsrap Core JS-->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-<!--Firebase Config-->
-<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js"></script>
-<!--core JS files-->
+    <!--Bootstrap-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js-fire"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-database.js"></script>
+    
 <script src="./src/firebase.js"></script>
 <script src="./src/scripts.js"></script>
 <script src="./src/components.js"></script>
-<script>
-    document.querySelector('form').assEventListener('submit', (e) => {
-        e.preventDefault()
-        const formData = new FormData(e.target)
-        const email = formData.get('email')
-        const password = formData.get('password')
+<script>document.querySelector('form').addEventListener('submit', (e) => {
+    e.preventDefault()
+    const formData = new FormData(event.target)
+    const email = formData.get('email')
+    const password = formData.get('password')
+    console.log({email, password})
+    signin(email, password)
 
-        console.log({email, password})
-
-        signin(email, password)
-    })
-    firebaseApp.auth().onAuthStateChanged(user => {
-        if(user) {
-            window.location.pathname = '/'
-        }
-    })
+})
+firebaseApp.auth().onAuthStateChanged(user =>{
+if(user){
+    window.location.pathname = '/'
+}
+})
 </script>
 </body>
 </html>

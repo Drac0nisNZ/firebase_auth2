@@ -14,7 +14,7 @@ navRef && navRef.auth().onAuthStateChanged(user => {
     }
 })
 
-firebaseApp.auth()onAuthStateChanged(user => {
+firebaseApp.auth().onAuthStateChanged(user => {
     if(user) {
         console.log('Logged in :', user)
     } else {
